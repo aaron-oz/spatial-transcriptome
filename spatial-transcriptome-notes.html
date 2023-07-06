@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-07-06 Thu 13:34 -->
+<!-- 2023-07-06 Thu 14:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spatial Statistics on Spatial Transcriptomics</title>
@@ -24,74 +24,73 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge99bd38">1. TODOS</a>
+<li><a href="#org65227a8">1. Intro</a></li>
+<li><a href="#orga6ab827">2. Useful resources</a>
 <ul>
-<li>
+<li><a href="#org6ffa5c1">2.1. Resources to consume</a></li>
+<li><a href="#orgc8079d2">2.2. Spatial Statistics</a></li>
+<li><a href="#org528fa6a">2.3. Spatial Transcriptomics</a></li>
+</ul>
+</li>
+<li><a href="#orgc81a397">3. Big Ideas in Spatial Stats and their (maybe) relevance</a>
 <ul>
-<li>
+<li><a href="#orgbf1e260">3.1. Point process models</a>
 <ul>
-<li><a href="#org6a98511"><span class="todo NEXT">NEXT</span> Share some sense of some spatial techniques with Sam so we can think better about specific applications</a></li>
-<li><a href="#org7c57063"><span class="todo TODO">TODO</span> Brainstorm more spatial tools that might apply</a></li>
+<li><a href="#org0d3c293">Inferring cell types at spatial locations</a></li>
+</ul>
+</li>
+<li><a href="#org7761adb">3.2. Spatial Downscaling</a>
+<ul>
+<li><a href="#orgc773b09">Downscaling via integration</a>
+<ul>
+<li><a href="#orgc0ee9f6">Better estimation by combining single cell and spatial data</a></li>
+</ul>
+</li>
+<li><a href="#orgf93375f">Observing system simulation experiments (OSSE)</a>
+<ul>
+<li><a href="#orge44a0bd">Assessment/comparison of novel/existing spatial collection techniques</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orga6890d9">2. Useful resources</a>
-<ul>
-<li><a href="#org0436fe1">2.1. Resources to consume</a></li>
-<li><a href="#org3b946eb">2.2. Spatial Statistics</a></li>
-<li><a href="#org773fabb">2.3. Spatial Transcriptomics</a></li>
-</ul>
-</li>
-<li><a href="#orgfa0c588">3. Big Ideas in Spatial Stats and their (maybe) relevance</a>
-<ul>
-<li><a href="#orga312c20">3.1. Point process models</a>
-<ul>
-<li><a href="#org8817bc8">Inferring cell types at spatial locations</a></li>
-</ul>
-</li>
-<li><a href="#orgae6a96b">3.2. Spatial Downscaling</a>
-<ul>
-<li><a href="#orgf0276b1">Downscaling via integration</a>
-<ul>
-<li><a href="#org341472b">Better estimation by combining single cell and spatial data</a></li>
-</ul>
-</li>
-<li><a href="#org3a320d0">Observing system simulation experiments (OSSE)</a>
-<ul>
-<li><a href="#orgf26a3d1">Assessment/comparison of novel/existing spatial collection techniques</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org5587672">4. Bibliography</a></li>
+<li><a href="#org3f90423">4. Bibliography</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orge99bd38" class="outline-2">
-<h2 id="orge99bd38"><span class="section-number-2">1.</span> TODOS</h2>
+<div id="outline-container-org65227a8" class="outline-2">
+<h2 id="org65227a8"><span class="section-number-2">1.</span> Intro</h2>
 <div class="outline-text-2" id="text-1">
+<p>
+Here are some (naive) and v1 attempts to think about how spatial stats
+tools might be used. I read /Museum of spatial transcriptomics/<sup><a href="#citeproc_bib_item_1">1</a></sup>
+section on data analysis methods after writing most of this and
+most/all of the ideas I toss out seem to already have a use in the
+field for some application.
+</p>
+
+<p>
+I think it might be more fruitful to start with what problems we want
+to solve and then work from there, but giving Sam some better idea of
+spatial stats tools might help define the problem.
+</p>
+
+<p>
+Still, I think we should meet again and talk about what question Sam
+most dreams of answering and figuring out what might be done to get us
+(closer to) there.
+</p>
 </div>
-<div id="outline-container-org6a98511" class="outline-5">
-<h5 id="org6a98511"><span class="todo NEXT">NEXT</span> Share some sense of some spatial techniques with Sam so we can think better about specific applications</h5>
 </div>
 
-<div id="outline-container-org7c57063" class="outline-5">
-<h5 id="org7c57063"><span class="todo TODO">TODO</span> Brainstorm more spatial tools that might apply</h5>
-</div>
-</div>
-
-<div id="outline-container-orga6890d9" class="outline-2">
-<h2 id="orga6890d9"><span class="section-number-2">2.</span> Useful resources</h2>
+<div id="outline-container-orga6ab827" class="outline-2">
+<h2 id="orga6ab827"><span class="section-number-2">2.</span> Useful resources</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org0436fe1" class="outline-3">
-<h3 id="org0436fe1"><span class="section-number-3">2.1.</span> Resources to consume</h3>
+<div id="outline-container-org6ffa5c1" class="outline-3">
+<h3 id="org6ffa5c1"><span class="section-number-3">2.1.</span> Resources to consume</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li class="off"><code>[&#xa0;]</code> <a href="https://www.nature.com/articles/s41588-023-01435-6">Spatiotemporal transcriptomic maps of whole mouse embryos at the onset of organogenesis</a></li>
@@ -102,25 +101,117 @@
 </div>
 </div>
 
-<div id="outline-container-org3b946eb" class="outline-3">
-<h3 id="org3b946eb"><span class="section-number-3">2.2.</span> Spatial Statistics</h3>
+<div id="outline-container-orgc8079d2" class="outline-3">
+<h3 id="orgc8079d2"><span class="section-number-3">2.2.</span> Spatial Statistics</h3>
 <div class="outline-text-3" id="text-2-2">
 <ul class="org-ul">
-<li>Bayesian melding of different resolutions<sup><a href="#citeproc_bib_item_1">1</a></sup></li>
+<li>Bayesian melding of different resolutions<sup><a href="#citeproc_bib_item_2">2</a></sup></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org773fabb" class="outline-3">
-<h3 id="org773fabb"><span class="section-number-3">2.3.</span> Spatial Transcriptomics</h3>
+<div id="outline-container-org528fa6a" class="outline-3">
+<h3 id="org528fa6a"><span class="section-number-3">2.3.</span> Spatial Transcriptomics</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li><p>
+<a href="https://www.nature.com/articles/s41592-022-01409-2">Museum of spatial transcriptomics</a><sup><a href="#citeproc_bib_item_1">1</a></sup>
+</p>
+
+<p>
+Broad description of methods being used and the associated problems they address:
+</p>
+
+<blockquote>
+<p>
+Data Analysis - Downstream
+</p>
+
+<p>
+Downstream analyses most often apply to the gene count matrix and cell or spot locations, and are thus largely independent of data-collection technologies.
+</p>
+
+<p>
+Given the relevance of scRNA-seq to spatial data, and how spatial data
+are often analyzed like scRNA-seq data in exploratory data analysis
+(EDA), popular scRNA-seq EDA ecosystems, such as Seurat3, SCANPY
+(which spatical single-cell analysis in Python (Squidpy) is built
+on), and SingleCellExperiment (extended by SpatialExperiment),
+have added functionalities for spatial data, such as updates to data
+containers and functions to facilitate visualization of gene
+expression and cell or spot metadata at spatial locations (Section 7.2
+of Supplementary Information). EDA packages dedicated to spatial data
+with beautiful graphics and good documentation have also been written,
+such as Giotto and STUtility. Seurat and Giotto also implement
+basic methods to identify spatially variable genes. In addition,
+Giotto implements methods to identify cell-type enrichment in ST and
+Visium spots, to identify gene coexpression and association between
+gene expression and cell-type colocalization, and to identify spatial
+regions.
+</p>
+
+<p>
+Spatially variable genes are genes whose expression is associated with
+spatial location (Section 7.5 of Supplementary Information). Three
+approaches are commonly used for these genes: Gaussian process
+regression (GPR) and its generalization to Poisson and N,
+Laplacian score, and Moran’s I. GPR-based methods model normalize
+gene expression or the rate parameter of Poisson or NB gene expression
+as a GPR and find whether the model better describes the data with the
+spatial term than without. Laplacian-score-based methods identify
+genes whose expression better reflects the structure of a spatial
+neighborhood graph. The locations of cells can also be modeled as a
+spatial point process with gene expression as marks; spatially
+variable genes can be identified as marks associated with
+locations. Fitting GPR models to numerous genes can be time
+consuming, especially when a Bayesian approach with Markov chain Monte
+Carlo is used. Permutation testing used in Laplacian-score-based
+methods can also be time consuming. As both GPR- and
+Laplacian-score-based methods seek to identify spatial
+autocorrelation, sometimes the classic spatial autocorrelation metric
+Moran’s I is directly used to identify spatially variable genes, as in
+Seurat v3 and above. MERINGUE uses a local version of Moran’s
+I. Moran’s I and its significance testing are implemented in
+established geospatial packages and are easy and fast to run, but may
+have less statistical power than model-based methods.
+</p>
+
+<p>
+Spatial information also enables identification of potential cell–cell
+interactions (Supplementary Section 7.8). This is commonly done with
+knowledge of ligand–receptor (L–R) pairs, and can test which L–R pairs
+are more likely to be expressed in neighboring cells or spots or
+whether two cell types each expressing the ligand and the receptor are
+more likely to colocalize. The cross-type L function from a spatial
+point process can be used to find cell types that
+colocalize. Expression of genes of interest can also be modeled,
+including a term for cell–cell colocalization; a gene is considered
+associated with cell–cell colocalization if the model better describes
+the data with this term than without.
+</p>
+
+<p>
+There are many other types of downstream analysis that are useful for
+spatial transcriptomics analysis, including identification of
+archetypal gene patterns (Section 7.6 of Supplementary Information),
+spatial regions defined by the transcriptome (Section 7.7 of
+Supplementary Information), inferring gene–gene interactions (Section
+7.9 of Supplementary Information), subcellular transcript localization
+(Section 7.10 of Supplementary Information), and gene expression
+imputation from H&amp;E images (Section 7.11 of Supplementary
+Information).
+</p>
+</blockquote></li>
+</ul>
 </div>
 </div>
-<div id="outline-container-orgfa0c588" class="outline-2">
-<h2 id="orgfa0c588"><span class="section-number-2">3.</span> Big Ideas in Spatial Stats and their (maybe) relevance</h2>
+</div>
+<div id="outline-container-orgc81a397" class="outline-2">
+<h2 id="orgc81a397"><span class="section-number-2">3.</span> Big Ideas in Spatial Stats and their (maybe) relevance</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orga312c20" class="outline-3">
-<h3 id="orga312c20"><span class="section-number-3">3.1.</span> Point process models</h3>
+<div id="outline-container-orgbf1e260" class="outline-3">
+<h3 id="orgbf1e260"><span class="section-number-3">3.1.</span> Point process models</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Point process models deal with the pattern of points in a bounded
@@ -134,9 +225,9 @@ These models can be extended to handle <i>multiple types of points</i>.
 </p>
 </div>
 
-<div id="outline-container-org8817bc8" class="outline-4">
-<h4 id="org8817bc8">Inferring cell types at spatial locations&#xa0;&#xa0;&#xa0;<span class="tag"><span class="IDEA">IDEA</span></span></h4>
-<div class="outline-text-4" id="text-org8817bc8">
+<div id="outline-container-org0d3c293" class="outline-4">
+<h4 id="org0d3c293">Inferring cell types at spatial locations&#xa0;&#xa0;&#xa0;<span class="tag"><span class="IDEA">IDEA</span></span></h4>
+<div class="outline-text-4" id="text-org0d3c293">
 <p>
 This might be useful if we're interested in using spatial
 transcriptomics to better map the location of cell types. For
@@ -148,8 +239,8 @@ observed grids.
 </div>
 </div>
 
-<div id="outline-container-orgae6a96b" class="outline-3">
-<h3 id="orgae6a96b"><span class="section-number-3">3.2.</span> Spatial Downscaling</h3>
+<div id="outline-container-org7761adb" class="outline-3">
+<h3 id="org7761adb"><span class="section-number-3">3.2.</span> Spatial Downscaling</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 There are different possible topical applications, but the main
@@ -182,7 +273,7 @@ monitoring stations.
 <p>
 Unless we have good(?) models of the cell (systems) you'd like to
 assess, this approach is probably not that useful to us. More
-likely relevant are approaches<sup><a href="#citeproc_bib_item_1">1</a></sup> that address the
+likely relevant are approaches<sup><a href="#citeproc_bib_item_2">2</a></sup> that address the
 change of support problem (small/fine scale truth mismatched to
 large/coarse scale observations) by directly expressing the
 coarse-resolution output as the integral/average over
@@ -195,20 +286,20 @@ Below I describe some downscaling use cases in the spatial stats lit.
 </p>
 </div>
 
-<div id="outline-container-orgf0276b1" class="outline-4">
-<h4 id="orgf0276b1">Downscaling via integration</h4>
-<div class="outline-text-4" id="text-orgf0276b1">
+<div id="outline-container-orgc773b09" class="outline-4">
+<h4 id="orgc773b09">Downscaling via integration</h4>
+<div class="outline-text-4" id="text-orgc773b09">
 <p>
-Fuentes and Raftery<sup><a href="#citeproc_bib_item_1">1</a></sup> synthesize data from two
+Fuentes and Raftery<sup><a href="#citeproc_bib_item_2">2</a></sup> synthesize data from two
 different resolutions &#x2013; coarse but complete spatial coverage and
 high quality but spatially limited point sources &#x2013; to create a
 coherent model for the latent unobserved truth.
 </p>
 </div>
 
-<div id="outline-container-org341472b" class="outline-5">
-<h5 id="org341472b">Better estimation by combining single cell and spatial data&#xa0;&#xa0;&#xa0;<span class="tag"><span class="IDEA">IDEA</span></span></h5>
-<div class="outline-text-5" id="text-org341472b">
+<div id="outline-container-orgc0ee9f6" class="outline-5">
+<h5 id="orgc0ee9f6">Better estimation by combining single cell and spatial data&#xa0;&#xa0;&#xa0;<span class="tag"><span class="IDEA">IDEA</span></span></h5>
+<div class="outline-text-5" id="text-orgc0ee9f6">
 <p>
 In some ways this is very similar to augmenting the spatial
 transcriptomics data with single cell data, except that we don't
@@ -222,9 +313,9 @@ underlying spatial field.
 </div>
 </div>
 
-<div id="outline-container-org3a320d0" class="outline-4">
-<h4 id="org3a320d0">Observing system simulation experiments (OSSE)</h4>
-<div class="outline-text-4" id="text-org3a320d0">
+<div id="outline-container-orgf93375f" class="outline-4">
+<h4 id="orgf93375f">Observing system simulation experiments (OSSE)</h4>
+<div class="outline-text-4" id="text-orgf93375f">
 <blockquote>
 <p>
 Observing system simulation experiments (OSSEs) are widely used in
@@ -243,19 +334,19 @@ perspective.  Since OSSEs deal entirely with simulations, they provide
 a cost-effective approach to evaluating the impact of new observing
 systems and performance of new data assimilation algorithms. In
 particular, OSSEs can be employed to compare competing observing
-system designs. <sup><a href="#citeproc_bib_item_2">2</a></sup>
+system designs. <sup><a href="#citeproc_bib_item_3">3</a></sup>
 </p>
 </blockquote>
 </div>
 
 
-<div id="outline-container-orgf26a3d1" class="outline-5">
-<h5 id="orgf26a3d1">Assessment/comparison of novel/existing spatial collection techniques&#xa0;&#xa0;&#xa0;<span class="tag"><span class="IDEA">IDEA</span></span></h5>
-<div class="outline-text-5" id="text-orgf26a3d1">
+<div id="outline-container-orge44a0bd" class="outline-5">
+<h5 id="orge44a0bd">Assessment/comparison of novel/existing spatial collection techniques&#xa0;&#xa0;&#xa0;<span class="tag"><span class="IDEA">IDEA</span></span></h5>
+<div class="outline-text-5" id="text-orge44a0bd">
 <p>
 Something like this could be used to assess different spatial data
 collection techniques or to assess the improvements that a novel
-spatial measuring technique could provide.
+spatial measuring technique could provide. Not something that I'm super interested in&#x2026;
 </p>
 </div>
 </div>
@@ -265,16 +356,19 @@ spatial measuring technique could provide.
 
 
 
-<div id="outline-container-org5587672" class="outline-2">
-<h2 id="org5587672"><span class="section-number-2">4.</span> Bibliography</h2>
+<div id="outline-container-org3f90423" class="outline-2">
+<h2 id="org3f90423"><span class="section-number-2">4.</span> Bibliography</h2>
 <div class="outline-text-2" id="text-4">
 <style>.csl-left-margin{float: left; padding-right: 0em;}
  .csl-right-inline{margin: 0 0 0 1em;}</style><div class="csl-bib-body">
   <div class="csl-entry"><a id="citeproc_bib_item_1"></a>
-    <div class="csl-left-margin">1.</div><div class="csl-right-inline">Fuentes, M. &#38; Raftery, A. E. <a href="https://doi.org/10.1111/j.0006-341X.2005.030821.x">Model evaluation and spatial interpolation by Bayesian combination of observations with outputs from numerical models</a>. <i>Biometrics</i> <b>61</b>, 36–45 (2005).</div>
+    <div class="csl-left-margin">1.</div><div class="csl-right-inline">Moses, L. &#38; Pachter, L. <a href=" https://doi.org/10.1038/s41592-022-01494-3 ">Museum of spatial transcriptomics</a>. <i>Nature Methods</i> <b>19</b>, 534–546 (2022).</div>
   </div>
   <div class="csl-entry"><a id="citeproc_bib_item_2"></a>
-    <div class="csl-left-margin">2.</div><div class="csl-right-inline">Ma, P., Kang, E. L., Braverman, A. J. &#38; Nguyen, H. M. <a href="https://doi.org/10.1080/00401706.2018.1524791">Spatial Statistical Downscaling for Constructing High-Resolution Nature Runs in Global Observing System Simulation Experiments</a>. <i>Technometrics</i> <b>61</b>, 322–340 (2019).</div>
+    <div class="csl-left-margin">2.</div><div class="csl-right-inline">Fuentes, M. &#38; Raftery, A. E. <a href="https://doi.org/10.1111/j.0006-341X.2005.030821.x">Model evaluation and spatial interpolation by Bayesian combination of observations with outputs from numerical models</a>. <i>Biometrics</i> <b>61</b>, 36–45 (2005).</div>
+  </div>
+  <div class="csl-entry"><a id="citeproc_bib_item_3"></a>
+    <div class="csl-left-margin">3.</div><div class="csl-right-inline">Ma, P., Kang, E. L., Braverman, A. J. &#38; Nguyen, H. M. <a href="https://doi.org/10.1080/00401706.2018.1524791">Spatial Statistical Downscaling for Constructing High-Resolution Nature Runs in Global Observing System Simulation Experiments</a>. <i>Technometrics</i> <b>61</b>, 322–340 (2019).</div>
   </div>
 </div>
 </div>
@@ -282,7 +376,7 @@ spatial measuring technique could provide.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Aaron Osgood-Zimmerman</p>
-<p class="date">Created: 2023-07-06 Thu 13:34</p>
+<p class="date">Created: 2023-07-06 Thu 14:16</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
