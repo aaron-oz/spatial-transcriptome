@@ -1,0 +1,134 @@
+#+options:    H:7 num:2 toc:t \n:nil @:t ::nil |:t ^:{} -:t f:t *:t TeX:t LaTeX:t skip:t d:(HIDE) tags:not-in-toc
+#+STARTUP:    align overview nodlcheck hidestars oddeven lognotestate latexpreview
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+#+SEQ_TODO:   NEXT(n) TODO(t) INPROGRESS(i) WAITING(w@) | DONE(d) CANCELED(c@)
+#+TAGS:       Write(w) Update(u) Fix(f) Check(c) noexport(n) Aaron(a) Sam(s)
+#+PROPERTY: header-args:R  :session *R_gen* :tangle yes
+#+TITLE:    Spatial Statistics on Spatial Transcriptomics
+#+AUTHOR:    Aaron Osgood-Zimmerman
+#+EMAIL:     aaron.oz@bucknell.edu
+#+DESCRIPTION: Stats ideas, comments, and notes for spatial transcriptomics data and problems. Collab with MS Raredon
+#+LANGUAGE:   en
+#+csl-style: ./nature.csl
+#+LATEX_HEADER: \usepackage{amsmath}
+#+LATEX_HEADER: \usepackage[margin=0.75in]{geometry}
+#+LATEX_HEADER: \usepackage{parskip}
+#+LATEX_HEADER: \usepackage{natbib}
+#+latex_header: \usepackage{dsfont}
+#+BIND: org-html-table-caption-above nil
+
+* TODOS
+
+**** NEXT Share some sense of some spatial techniques with Sam so we can think better about specific applications
+
+**** TODO Brainstorm more spatial tools that might apply
+
+* Useful resources
+** Resources to consume
+   - [ ] [[https://www.nature.com/articles/s41588-023-01435-6][Spatiotemporal transcriptomic maps of whole mouse embryos at the onset of organogenesis]]
+   - [ ] [[https://genomebiology.biomedcentral.com/articles/10.1186/s13059-022-02653-7][Statistical and machine learning methods for spatially resolved transcriptomics data analysis]]
+   - [ ] [[https://pubmed.ncbi.nlm.nih.gov/36452868/][Spatial statistics is a comprehensive tool for quantifying cell neighbor relationships and biological processes via tissue image analysis]]
+   - [ ] [[https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8494229/][Advances in spatial transcriptomic data analysis]]
+
+** Spatial Statistics
+    - Bayesian melding of different resolutions[[cite:&fuentes2005]]
+
+** Spatial Transcriptomics
+* Big Ideas in Spatial Stats and their (maybe) relevance
+** Point process models
+    Point process models deal with the pattern of points in a bounded
+    space. A classic example being observed locations of a specific
+    series of trees within a forest. The measured points may have
+    associated data (tree diam, height, etc) that might be of interest to model.
+
+    These models can be extended to handle /multiple types of points/.
+
+*** Inferring cell types at spatial locations :IDEA:
+    This might be useful if we're interested in using spatial
+    transcriptomics to better map the location of cell types. For
+    example, we might be able to use coarser spatial data to estimate
+    the presence/absence of cell types at the different spatially
+    observed grids.
+
+** Spatial Downscaling
+
+    There are different possible topical applications, but the main
+    idea would be to use developed spatial statistics models that
+    acknowledge and account for coarser resolution(s) of the data
+    observations to model a finer resolution latent (unobserved)
+    truth.
+
+    Examples include coarse satellite measurements used to
+    model finer resolution weather/climate, estimating county-level
+    properties from state-level measurements, etc.
+
+    This has very a very clear, understandable, and interpretable
+    analogy to spatial transcriptomic data where the measurements are
+    coarser than the single cells that we would like to directly
+    model.
+
+    Much of the downscaling literature is devoted to developing
+    methods for comparing, correcting, or calibrating numerical model
+    output using observed data from physical experiments and
+    monitoring stations.
+
+    Unless we have good(?) models of the cell (systems) you'd like to
+    assess, this approach is probably not that useful to us. More
+    likely relevant are approaches[[cite:&fuentes2005]] that address the
+    change of support problem (small/fine scale truth mismatched to
+    large/coarse scale observations) by directly expressing the
+    coarse-resolution output as the integral/average over
+    high-resolution grid cells, and build models using observations as
+    ground truth.
+
+    Below I describe some downscaling use cases in the spatial stats lit.
+
+*** Downscaling via integration
+
+     Fuentes and Raftery[[cite:&fuentes2005]] synthesize data from two
+     different resolutions -- coarse but complete spatial coverage and
+     high quality but spatially limited point sources -- to create a
+     coherent model for the latent unobserved truth.
+
+**** Better estimation by combining single cell and spatial data :IDEA:
+     In some ways this is very similar to augmenting the spatial
+     transcriptomics data with single cell data, except that we don't
+     have any measurements about the spatial locations of the
+     high-quality single cell data. This /maybe/ could be overcome use
+     some data augmentation scheme to simultaneously estimate the
+     spatial positions of the single cell data records and the
+     underlying spatial field.
+
+*** Observing system simulation experiments (OSSE)
+
+#+begin_quote
+Observing system simulation experiments (OSSEs) are widely used in
+atmospheric studies and climate monitoring to guide development of new
+observing systems ... and to evaluate performance of new data
+assimilation algorithms In an OSSE, a simulated atmospheric field from
+a numerical model is used as the "truth" to produce synthetic
+observations by adding suitable measurement errors and other
+representative errors. These synthetic observations are then fed to a
+data assimilation algorithm. Here, data assimilation refers to the
+process of fusing [coarse] observations from the observing systems
+such as satellites together with numerical model output [from a model
+of the system], to infer the true state of geophysical processes; see
+Wikle and Berliner (2007) for a formal definition from a statistical
+perspective.  Since OSSEs deal entirely with simulations, they provide
+a cost-effective approach to evaluating the impact of new observing
+systems and performance of new data assimilation algorithms. In
+particular, OSSEs can be employed to compare competing observing
+system designs. cite:&ma2019
+#+end_quote
+
+
+**** Assessment/comparison of novel/existing spatial collection techniques :IDEA:
+Something like this could be used to assess different spatial data
+collection techniques or to assess the improvements that a novel
+spatial measuring technique could provide.
+
+
+
+* Bibliography
+
+[[bibliography:~/Dropbox/Genetics/spatial-transcriptome/spatial-transcriptome-lib.bib]]

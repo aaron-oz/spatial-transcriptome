@@ -1,0 +1,93 @@
+% Created 2023-07-06 Thu 11:22
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{minted}
+\makeatletter
+\newcommand{\citeprocitem}[2]{\hyper@linkstart{cite}{citeproc_bib_item_#1}#2\hyper@linkend}
+\makeatother
+\usepackage{amsmath}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{parskip}
+\usepackage{natbib}
+\usepackage{dsfont}
+\setcounter{secnumdepth}{2}
+\author{Aaron Osgood-Zimmerman}
+\date{\today}
+\title{Spatial Statistics on Spatial Transcriptomics}
+\hypersetup{
+ pdfauthor={Aaron Osgood-Zimmerman},
+ pdftitle={Spatial Statistics on Spatial Transcriptomics},
+ pdfkeywords={},
+ pdfsubject={Stats ideas, comments, and notes for spatial transcriptomics data and problems. Collab with MS Raredon},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.4)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{TODOS}
+\label{sec:orgcd91fc9}
+\subsection{Resources to eat [0/5]}
+\label{sec:org3b21474}
+\begin{itemize}
+\item[{$\square$}]
+
+\item[{$\square$}]
+
+\item[{$\square$}]
+
+\item[{$\square$}]
+
+\item[{$\square$}]
+\end{itemize}
+
+\section{Useful resources}
+\label{sec:org67cc984}
+\subsection{Spatial Statistics}
+\label{sec:orgb08dbcb}
+\subsubsection*{\href{https://www.tandfonline.com/doi/full/10.1080/00401706.2018.1524791}{OSSEs} (\citeprocitem{1}{Ma et al. 2019})}
+\label{sec:org5b3f7de}
+\subsection{Spatial Transcriptomics}
+\label{sec:org0a981ca}
+
+\section{Big Ideas}
+\label{sec:org86c5c02}
+
+\subsection{Spatial Downscaling}
+\label{sec:orgcf8db8a}
+
+There are different possible topical applications, but the main
+idea would be to use developed spatial statistics models that
+acknowledge and account for coarser resolution(s) of the data
+observations to model a finer resolution latent (unobserved)
+truth.
+
+Examples include coarse satellite measurements used to
+model finer resolution weather/climate, estimating county-level
+properties from state-level measurements, etc.
+
+This has very a very clear, understandable, and interpretable
+analogy to spatial transcriptomic data where the measurements are
+coarser than the single cells that we would like to directly
+model.
+
+\subsubsection*{Spatial Downscaling Methods/Models}
+\label{sec:org135beaf}
+\paragraph*{Observing system simulation experiments (OSSE)}
+\label{sec:org19ea205}
+
+\printbibliography[../spatial-transcriptome-lib.bib]
+\end{document}

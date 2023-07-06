@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-07-06 Thu 13:34 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spatial Statistics on Spatial Transcriptomics</title>
+<meta name="author" content="Aaron Osgood-Zimmerman" />
+<meta name="description" content="Stats ideas, comments, and notes for spatial transcriptomics data and problems. Collab with MS Raredon" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Spatial Statistics on Spatial Transcriptomics</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orge99bd38">1. TODOS</a>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#org6a98511"><span class="todo NEXT">NEXT</span> Share some sense of some spatial techniques with Sam so we can think better about specific applications</a></li>
+<li><a href="#org7c57063"><span class="todo TODO">TODO</span> Brainstorm more spatial tools that might apply</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orga6890d9">2. Useful resources</a>
+<ul>
+<li><a href="#org0436fe1">2.1. Resources to consume</a></li>
+<li><a href="#org3b946eb">2.2. Spatial Statistics</a></li>
+<li><a href="#org773fabb">2.3. Spatial Transcriptomics</a></li>
+</ul>
+</li>
+<li><a href="#orgfa0c588">3. Big Ideas in Spatial Stats and their (maybe) relevance</a>
+<ul>
+<li><a href="#orga312c20">3.1. Point process models</a>
+<ul>
+<li><a href="#org8817bc8">Inferring cell types at spatial locations</a></li>
+</ul>
+</li>
+<li><a href="#orgae6a96b">3.2. Spatial Downscaling</a>
+<ul>
+<li><a href="#orgf0276b1">Downscaling via integration</a>
+<ul>
+<li><a href="#org341472b">Better estimation by combining single cell and spatial data</a></li>
+</ul>
+</li>
+<li><a href="#org3a320d0">Observing system simulation experiments (OSSE)</a>
+<ul>
+<li><a href="#orgf26a3d1">Assessment/comparison of novel/existing spatial collection techniques</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org5587672">4. Bibliography</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge99bd38" class="outline-2">
+<h2 id="orge99bd38"><span class="section-number-2">1.</span> TODOS</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org6a98511" class="outline-5">
+<h5 id="org6a98511"><span class="todo NEXT">NEXT</span> Share some sense of some spatial techniques with Sam so we can think better about specific applications</h5>
+</div>
+
+<div id="outline-container-org7c57063" class="outline-5">
+<h5 id="org7c57063"><span class="todo TODO">TODO</span> Brainstorm more spatial tools that might apply</h5>
+</div>
+</div>
+
+<div id="outline-container-orga6890d9" class="outline-2">
+<h2 id="orga6890d9"><span class="section-number-2">2.</span> Useful resources</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org0436fe1" class="outline-3">
+<h3 id="org0436fe1"><span class="section-number-3">2.1.</span> Resources to consume</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> <a href="https://www.nature.com/articles/s41588-023-01435-6">Spatiotemporal transcriptomic maps of whole mouse embryos at the onset of organogenesis</a></li>
+<li class="off"><code>[&#xa0;]</code> <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-022-02653-7">Statistical and machine learning methods for spatially resolved transcriptomics data analysis</a></li>
+<li class="off"><code>[&#xa0;]</code> <a href="https://pubmed.ncbi.nlm.nih.gov/36452868/">Spatial statistics is a comprehensive tool for quantifying cell neighbor relationships and biological processes via tissue image analysis</a></li>
+<li class="off"><code>[&#xa0;]</code> <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8494229/">Advances in spatial transcriptomic data analysis</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3b946eb" class="outline-3">
+<h3 id="org3b946eb"><span class="section-number-3">2.2.</span> Spatial Statistics</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>Bayesian melding of different resolutions<sup><a href="#citeproc_bib_item_1">1</a></sup></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org773fabb" class="outline-3">
+<h3 id="org773fabb"><span class="section-number-3">2.3.</span> Spatial Transcriptomics</h3>
+</div>
+</div>
+<div id="outline-container-orgfa0c588" class="outline-2">
+<h2 id="orgfa0c588"><span class="section-number-2">3.</span> Big Ideas in Spatial Stats and their (maybe) relevance</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orga312c20" class="outline-3">
+<h3 id="orga312c20"><span class="section-number-3">3.1.</span> Point process models</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Point process models deal with the pattern of points in a bounded
+space. A classic example being observed locations of a specific
+series of trees within a forest. The measured points may have
+associated data (tree diam, height, etc) that might be of interest to model.
+</p>
+
+<p>
+These models can be extended to handle <i>multiple types of points</i>.
+</p>
+</div>
+
+<div id="outline-container-org8817bc8" class="outline-4">
+<h4 id="org8817bc8">Inferring cell types at spatial locations&#xa0;&#xa0;&#xa0;<span class="tag"><span class="IDEA">IDEA</span></span></h4>
+<div class="outline-text-4" id="text-org8817bc8">
+<p>
+This might be useful if we're interested in using spatial
+transcriptomics to better map the location of cell types. For
+example, we might be able to use coarser spatial data to estimate
+the presence/absence of cell types at the different spatially
+observed grids.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgae6a96b" class="outline-3">
+<h3 id="orgae6a96b"><span class="section-number-3">3.2.</span> Spatial Downscaling</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+There are different possible topical applications, but the main
+idea would be to use developed spatial statistics models that
+acknowledge and account for coarser resolution(s) of the data
+observations to model a finer resolution latent (unobserved)
+truth.
+</p>
+
+<p>
+Examples include coarse satellite measurements used to
+model finer resolution weather/climate, estimating county-level
+properties from state-level measurements, etc.
+</p>
+
+<p>
+This has very a very clear, understandable, and interpretable
+analogy to spatial transcriptomic data where the measurements are
+coarser than the single cells that we would like to directly
+model.
+</p>
+
+<p>
+Much of the downscaling literature is devoted to developing
+methods for comparing, correcting, or calibrating numerical model
+output using observed data from physical experiments and
+monitoring stations.
+</p>
+
+<p>
+Unless we have good(?) models of the cell (systems) you'd like to
+assess, this approach is probably not that useful to us. More
+likely relevant are approaches<sup><a href="#citeproc_bib_item_1">1</a></sup> that address the
+change of support problem (small/fine scale truth mismatched to
+large/coarse scale observations) by directly expressing the
+coarse-resolution output as the integral/average over
+high-resolution grid cells, and build models using observations as
+ground truth.
+</p>
+
+<p>
+Below I describe some downscaling use cases in the spatial stats lit.
+</p>
+</div>
+
+<div id="outline-container-orgf0276b1" class="outline-4">
+<h4 id="orgf0276b1">Downscaling via integration</h4>
+<div class="outline-text-4" id="text-orgf0276b1">
+<p>
+Fuentes and Raftery<sup><a href="#citeproc_bib_item_1">1</a></sup> synthesize data from two
+different resolutions &#x2013; coarse but complete spatial coverage and
+high quality but spatially limited point sources &#x2013; to create a
+coherent model for the latent unobserved truth.
+</p>
+</div>
+
+<div id="outline-container-org341472b" class="outline-5">
+<h5 id="org341472b">Better estimation by combining single cell and spatial data&#xa0;&#xa0;&#xa0;<span class="tag"><span class="IDEA">IDEA</span></span></h5>
+<div class="outline-text-5" id="text-org341472b">
+<p>
+In some ways this is very similar to augmenting the spatial
+transcriptomics data with single cell data, except that we don't
+have any measurements about the spatial locations of the
+high-quality single cell data. This <i>maybe</i> could be overcome use
+some data augmentation scheme to simultaneously estimate the
+spatial positions of the single cell data records and the
+underlying spatial field.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3a320d0" class="outline-4">
+<h4 id="org3a320d0">Observing system simulation experiments (OSSE)</h4>
+<div class="outline-text-4" id="text-org3a320d0">
+<blockquote>
+<p>
+Observing system simulation experiments (OSSEs) are widely used in
+atmospheric studies and climate monitoring to guide development of new
+observing systems &#x2026; and to evaluate performance of new data
+assimilation algorithms In an OSSE, a simulated atmospheric field from
+a numerical model is used as the "truth" to produce synthetic
+observations by adding suitable measurement errors and other
+representative errors. These synthetic observations are then fed to a
+data assimilation algorithm. Here, data assimilation refers to the
+process of fusing [coarse] observations from the observing systems
+such as satellites together with numerical model output [from a model
+of the system], to infer the true state of geophysical processes; see
+Wikle and Berliner (2007) for a formal definition from a statistical
+perspective.  Since OSSEs deal entirely with simulations, they provide
+a cost-effective approach to evaluating the impact of new observing
+systems and performance of new data assimilation algorithms. In
+particular, OSSEs can be employed to compare competing observing
+system designs. <sup><a href="#citeproc_bib_item_2">2</a></sup>
+</p>
+</blockquote>
+</div>
+
+
+<div id="outline-container-orgf26a3d1" class="outline-5">
+<h5 id="orgf26a3d1">Assessment/comparison of novel/existing spatial collection techniques&#xa0;&#xa0;&#xa0;<span class="tag"><span class="IDEA">IDEA</span></span></h5>
+<div class="outline-text-5" id="text-orgf26a3d1">
+<p>
+Something like this could be used to assess different spatial data
+collection techniques or to assess the improvements that a novel
+spatial measuring technique could provide.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org5587672" class="outline-2">
+<h2 id="org5587672"><span class="section-number-2">4.</span> Bibliography</h2>
+<div class="outline-text-2" id="text-4">
+<style>.csl-left-margin{float: left; padding-right: 0em;}
+ .csl-right-inline{margin: 0 0 0 1em;}</style><div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>
+    <div class="csl-left-margin">1.</div><div class="csl-right-inline">Fuentes, M. &#38; Raftery, A. E. <a href="https://doi.org/10.1111/j.0006-341X.2005.030821.x">Model evaluation and spatial interpolation by Bayesian combination of observations with outputs from numerical models</a>. <i>Biometrics</i> <b>61</b>, 36–45 (2005).</div>
+  </div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>
+    <div class="csl-left-margin">2.</div><div class="csl-right-inline">Ma, P., Kang, E. L., Braverman, A. J. &#38; Nguyen, H. M. <a href="https://doi.org/10.1080/00401706.2018.1524791">Spatial Statistical Downscaling for Constructing High-Resolution Nature Runs in Global Observing System Simulation Experiments</a>. <i>Technometrics</i> <b>61</b>, 322–340 (2019).</div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Aaron Osgood-Zimmerman</p>
+<p class="date">Created: 2023-07-06 Thu 13:34</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
